@@ -18,7 +18,14 @@ class HomeWorkFive {
                 System.out.println(personArr[i]);
             }
         }
-    }
+        for (int i = 0; i < personArr.length; i++) {
+            if (personArr[i].getSalary() > 55000) {
+                System.out.println(personArr[i].getFullName());
+            }
+        }
+        personArr[4] = new Person("Bladimir Shumov", "Translator", "vlad@gmail.com", "89345678978", 55000, 16);
+        System.out.println(personArr[4]);
+	}
 }
 
 class Person {
@@ -42,7 +49,21 @@ class Person {
         return this.age;
     }
 
-     @ Override
+    public int getSalary() {
+        return this.salary;
+    }
+
+    public String getFullName() {
+        return this.fullName;
+    }
+
+    public void setAge(int age) {
+        if (age < 18) {
+            this.age = age;
+        }
+    }
+
+     @Override
     public String toString() {
         return fullName + ", " + position + ", " + email + ", " + phone + ", " + salary + ", " + age;
     }
