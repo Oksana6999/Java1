@@ -10,10 +10,10 @@ class HomeWorkThree {
     public static void main(String[]args) {
         isArr100();
         isArr0101();
-		isArrSixOn2();
-		pastOneInDiagonal();
-		isArrReturn(5,7);
-		
+        isArrSixOn2();
+        pastOneInDiagonal();
+        isArrReturn(5, 7);
+
     }
     static void isArr0101() {
         int[]arrOne = {
@@ -50,31 +50,45 @@ class HomeWorkThree {
     }
 
     static void isArrSixOn2() {
-		int[]arrThree = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-		System.out.println(Arrays.toString(arrThree));
-		for (int i = 0; i < arrThree.length; i++) {
-			if (arrThree[i] < 6) {
-				arrThree[i] = arrThree[i]*2;
-			}
-		}
-		System.out.println(Arrays.toString(arrThree));
-	}
-	static void pastOneInDiagonal() {
-		int[][]arrDouble = new int [5][5];
-		int i, j;
-		for (i = 0; i < 5; i++)
-			for (j = 0; j < 5; j++){
-				if (i == j) {
-					arrDouble[i][j] = 1;
-				}
-			}
-		System.out.println(Arrays.deepToString(arrDouble));
-	}
-	static int [] isArrReturn (int len, int initialValue) {
-		int[] arrFive = new int [len];
-		for (int i = 0; i < arrFive.length; i++) {
-			arrFive[i]=initialValue;
-		}
-		return arrFive;
-	}
+        int[]arrThree = {
+            1,
+            5,
+            3,
+            2,
+            11,
+            4,
+            5,
+            2,
+            4,
+            8,
+            9,
+            1
+        };
+        System.out.println(Arrays.toString(arrThree));
+        for (int i = 0; i < arrThree.length; i++) {
+            if (arrThree[i] < 6) {
+                arrThree[i] = arrThree[i] * 2;
+            }
+        }
+        System.out.println(Arrays.toString(arrThree));
+    }
+    static void pastOneInDiagonal() {
+        int[][]arrDouble = new int[5][5];
+        int i,
+        j;
+        for (i = 0; i < 5; i++)
+            for (j = 0; j < 5; j++) {
+                if (i == j) {
+                    arrDouble[i][j] = 1;
+                }
+            }
+        System.out.println(Arrays.deepToString(arrDouble));
+    }
+    static int[]isArrReturn(int len, int initialValue) {
+        int[]arrFive = new int[len];
+        for (int i = 0; i < arrFive.length; i++) {
+            arrFive[i] = initialValue;
+        }
+        return arrFive;
+    }
 }
