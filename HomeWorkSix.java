@@ -9,16 +9,19 @@
 
 class HomeWorkSix {
     public static void main(String[]args) {
-        IAnimal cat = new Cat("Barsik", "white and black", 3, 100);
-        IAnimal cat1 = new Cat("Musyanya", "red", 2, 150);
-        IAnimal dog = new Dog("Bobik", "black", 5, 20, 30);
+        IAnimal cat = new Cat("Barsik", 200);
+        IAnimal cat1 = new Cat("Musyanya", 200);
+        IAnimal dog = new Dog("Bobik", 15, 500);
         IAnimal[]animals = {
             cat,
             cat1,
             dog
         };
+        System.out.println(cat.run(210));
         System.out.println(cat1.run(100));
         System.out.println(dog.swim(200));
+        System.out.println(cat1.swim(10));
+        System.out.println(dog.run(1000));
         for (IAnimal a: animals) {
             System.out.println(a);
         }
@@ -26,49 +29,21 @@ class HomeWorkSix {
 }
 
 class Cat extends Animal {
-    int distanceRun;
 
-    Cat(String name, String color, int age, int distanceRun) {
-        super(name, color, age);
-        if (distanceRun < 200) {
-            this.distanceRun = distanceRun;
-        }
-    }
-
-     @Override
-    public String run(int distanceRun) {
-        return name + " run " + distanceRun + "m";
+    Cat(String name, int limitRun) {
+        super(name, limitRun);
     }
 
      @Override
     public String swim(int distanceSwim) {
-        return name + " swim " + distanceSwim + "m";
+        return name + " is a cat and can't swim.";
     }
 }
 
 class Dog extends Animal {
 
-    int distanceRun;
-    int distanceSwim;
-
-    Dog(String name, String color, int age, int distanceRun, int distanceSwim) {
-        super(name, color, age);
-        if (distanceRun < 500) {
-            this.distanceRun = distanceRun;
-        }
-        if (distanceSwim < 10) {
-            this.distanceSwim = distanceSwim;
-        }
-    }
-
-     @Override
-    public String run(int distanceRun) {
-        return name + " run " + distanceRun + "m";
-    }
-
-     @Override
-    public String swim(int distanceSwim) {
-        return name + " swim " + distanceSwim + "m";
+    Dog(String name, int limitRun, int limitSwim) {
+        super(name, limitRun, limitSwim);
     }
 }
 
@@ -79,17 +54,38 @@ interface IAnimal {
 
 abstract class Animal implements IAnimal {
     protected String name;
-    protected String color;
-    protected int age;
+    protected int limitRun;
+    protected int limitSwim;
 
-    Animal(String name, String color, int age) {
+    Animal(String name, int limitRun, int limitSwim) {
         this.name = name;
-        this.color = color;
-        this.age = age;
+        this.limitRun = limitRun;
+        this.limitSwim = limitSwim;
+    }
+
+    Animal(String name, int limitRun) {
+        this.name = name;
+        this.limitRun = limitRun;
+    }
+
+     @Override
+    public String run(int distanceRun) {
+        if (distanceRun < limitRun) {
+            return name + " run " + distanceRun + "m";
+        } else
+            return name + " can't run " + distanceRun + "m";
+    }
+
+     @Override
+    public String swim(int distanceSwim) {
+        if (distanceSwim < limitSwim) {
+            return name + " run " + distanceSwim + "m";
+        } else
+            return name + " can't swim " + distanceSwim + "m";
     }
 
      @Override
     public String toString() {
-        return name + ", " + color + ", " + age;
+        return name + ", limit run " + limitRun + "m, limit swim " + limitSwim + "m.";
     }
 }
